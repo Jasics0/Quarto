@@ -153,7 +153,6 @@ public class GameBoard {
         int control[] = { 0, 0, 0, 0 };
         int aux[];
         GamePiece previous = board[0][0];
-
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
                 if (previous != null && board[i][j] != null) {
@@ -244,7 +243,7 @@ public class GameBoard {
     public boolean verifyControl(int[] c) {
         boolean output = false;
         for (int i = 0; i < 4; i++) {
-            if (c[i] == 4) {
+            if (c[i] >= 3) {
                 output = true;
                 winningAttribute = i;
                 break;

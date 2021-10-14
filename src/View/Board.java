@@ -31,7 +31,7 @@ public class Board extends javax.swing.JFrame {
     int status = 0;
     boolean aux = false;
     JFrame f = new JFrame();
-
+    
     public Board() {
         initComponents();
         while (j1.equals("")) {
@@ -49,7 +49,7 @@ public class Board extends javax.swing.JFrame {
             } else if (j2.equals(j1)) {
                 JOptionPane.showMessageDialog(f, "Nombre de usuario ya existente, por favor digite otro nombre.",
                         "Error", JOptionPane.ERROR_MESSAGE);
-
+                
             }
         }
         jLabel13.setText("Jugador 1: " + j1);
@@ -60,7 +60,7 @@ public class Board extends javax.swing.JFrame {
         jLabel12.setText("Turno: " + usuarios[shift]);
         deshabilitar();
     }
-
+    
     public void auxBoard() {
         table[0] = R37;
         table[1] = R41;
@@ -79,7 +79,7 @@ public class Board extends javax.swing.JFrame {
         table[14] = R33;
         table[15] = R58;
     }
-
+    
     public void updateBoard() {
         R37 = table[0];
         R41 = table[1];
@@ -98,7 +98,7 @@ public class Board extends javax.swing.JFrame {
         R33 = table[14];
         R58 = table[15];
     }
-
+    
     public void habilitar() {
         R26.setEnabled(true);
         R27.setEnabled(true);
@@ -117,7 +117,7 @@ public class Board extends javax.swing.JFrame {
         R41.setEnabled(true);
         R58.setEnabled(true);
     }
-
+    
     public void deshabilitar() {
         R26.setEnabled(false);
         R27.setEnabled(false);
@@ -136,7 +136,7 @@ public class Board extends javax.swing.JFrame {
         R41.setEnabled(false);
         R58.setEnabled(false);
     }
-
+    
     public void putPiece() {
         while (status != 200) {
             switch (status = t.putPiece(numberPiece, numberBox)) {
@@ -149,15 +149,16 @@ public class Board extends javax.swing.JFrame {
             }
         }
     }
-
+    
     public void showBoard() {
         int c = 0;
         GamePiece board[][] = t.getBoardArr();
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
-                if (board[i][j] != null)
+                if (board[i][j] != null) {
                     table[c].setIcon(
                             new javax.swing.ImageIcon(getClass().getResource("/img/" + board[i][j].getNp() + ".png")));
+                }
                 c++;
             }
         }
@@ -1003,6 +1004,8 @@ public class Board extends javax.swing.JFrame {
 
     private void R58ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_R58ActionPerformed
         numberBox = 15;
+        putPiece();
+        R58.setEnabled(false);
     }// GEN-LAST:event_R58ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton5ActionPerformed
@@ -1097,7 +1100,9 @@ public class Board extends javax.swing.JFrame {
 
     private void R41ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_R41ActionPerformed
         numberBox = 1;
-
+        putPiece();
+        R41.setEnabled(false);
+        
     }// GEN-LAST:event_R41ActionPerformed
 
     private void R40ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_R40ActionPerformed
@@ -1106,72 +1111,98 @@ public class Board extends javax.swing.JFrame {
 
     private void R39ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_R39ActionPerformed
         numberBox = 10;
-
+        putPiece();
+        R39.setEnabled(false);
+        
     }// GEN-LAST:event_R39ActionPerformed
 
     private void R38ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_R38ActionPerformed
         numberBox = 2;
-
+        putPiece();
+        R38.setEnabled(false);
+        
     }// GEN-LAST:event_R38ActionPerformed
 
     private void R37ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_R37ActionPerformed
         numberBox = 0;
         putPiece();
+        R37.setEnabled(false);
     }// GEN-LAST:event_R37ActionPerformed
 
     private void R36ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_R36ActionPerformed
         numberBox = 11;
-
+        putPiece();
+        R36.setEnabled(false);
+        
     }// GEN-LAST:event_R36ActionPerformed
 
     private void R35ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_R35ActionPerformed
         numberBox = 7;
-
+        putPiece();
+        R35.setEnabled(false);
+        
     }// GEN-LAST:event_R35ActionPerformed
 
     private void R34ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_R34ActionPerformed
         numberBox = 3;
-
+        putPiece();
+        R34.setEnabled(false);
     }// GEN-LAST:event_R34ActionPerformed
 
     private void R33ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_R33ActionPerformed
         numberBox = 14;
-
+        putPiece();
+        R33.setEnabled(false);
+        
     }// GEN-LAST:event_R33ActionPerformed
 
     private void R32ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_R32ActionPerformed
         numberBox = 6;
-
+        putPiece();
+        R32.setEnabled(false);
+        
     }// GEN-LAST:event_R32ActionPerformed
 
     private void R31ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_R31ActionPerformed
         numberBox = 4;
-
+        putPiece();
+        R31.setEnabled(false);
+        
     }// GEN-LAST:event_R31ActionPerformed
 
     private void R26ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_R26ActionPerformed
         numberBox = 5;
-
+        putPiece();
+        R26.setEnabled(false);
+        
     }// GEN-LAST:event_R26ActionPerformed
 
     private void R28ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_R28ActionPerformed
         numberBox = 8;
-
+        putPiece();
+        R28.setEnabled(false);
+        
     }// GEN-LAST:event_R28ActionPerformed
 
     private void R30ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_R30ActionPerformed
         numberBox = 9;
-
+        putPiece();
+        R30.setEnabled(false);
+        
     }// GEN-LAST:event_R30ActionPerformed
 
     private void R29ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_R29ActionPerformed
         numberBox = 12;
-
+        putPiece();
+        R29.setEnabled(false);
+        
     }// GEN-LAST:event_R29ActionPerformed
 
     private void R27ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_R27ActionPerformed
         numberBox = 13;
-
+        putPiece();
+        R27.setEnabled(false);
+        
     }// GEN-LAST:event_R27ActionPerformed
 
     /**

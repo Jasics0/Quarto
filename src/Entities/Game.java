@@ -1,9 +1,16 @@
 package Entities;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Scanner;
 
 public class Game {
 
+    public String FechaActual() {
+        String Fecha = new SimpleDateFormat("dd/MMMM/YYYY/HH:mm:ss").format(Calendar.getInstance().getTime());
+        return Fecha;
+    }
+    
     public void play(User u[]) {
         Scanner keyboard = new Scanner(System.in);
         GameBoard t = new GameBoard();

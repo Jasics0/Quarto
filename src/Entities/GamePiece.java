@@ -12,8 +12,10 @@ package Entities;
 public class GamePiece {
 
     private int features[] = new int[4];
+    private int np;
 
-    public GamePiece(int color, int size, int shape, int backfill) {
+    public GamePiece(int nump, int color, int size, int shape, int backfill) {
+        np = nump;
         features[0] = color;
         features[1] = size;
         features[2] = shape;
@@ -39,4 +41,13 @@ public class GamePiece {
     public int getBackkfill() {
         return features[3];
     }
+
+    public int getNp() {
+        return np;
+    }
+
+    public void setNp(int np) {
+        this.np = np;
+    }
+
 }

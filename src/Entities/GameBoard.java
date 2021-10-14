@@ -21,27 +21,27 @@ public class GameBoard {
     }
 
     public boolean verifyPiece(int p) {
-        return (piece[p] != null) ? true : false;
+        return (piece[p] != null);
     }
 
     public void createPieces() {
-        piece[0] = new GamePiece(1, 1, 1, 1);//ok
-        piece[1] = new GamePiece(1, 1, 1, 0);//ok
-        piece[2] = new GamePiece(1, 1, 0, 1);//ok
-        piece[3] = new GamePiece(1, 0, 1, 1);//ok
-        piece[4] = new GamePiece(1, 0, 1, 0);//ok
-        piece[5] = new GamePiece(1, 0, 0, 1);//ok
-        piece[6] = new GamePiece(1, 0, 0, 0);//ok
-        piece[7] = new GamePiece(1, 1, 0, 0);
+        piece[0] = new GamePiece(0, 1, 1, 1, 1);//ok
+        piece[1] = new GamePiece(1, 1, 1, 1, 0);//ok
+        piece[2] = new GamePiece(2, 1, 1, 0, 1);//ok
+        piece[3] = new GamePiece(3, 1, 0, 1, 1);//ok
+        piece[4] = new GamePiece(4, 1, 0, 1, 0);//ok
+        piece[5] = new GamePiece(5, 1, 0, 0, 1);//ok
+        piece[6] = new GamePiece(6, 1, 0, 0, 0);//ok
+        piece[7] = new GamePiece(7, 1, 1, 0, 0);
 
-        piece[8] = new GamePiece(0, 1, 1, 1);//ok
-        piece[9] = new GamePiece(0, 1, 1, 0);//ok
-        piece[10] = new GamePiece(0, 1, 0, 1);//ok
-        piece[11] = new GamePiece(0, 0, 1, 1);//ok
-        piece[12] = new GamePiece(0, 0, 1, 0);//ok
-        piece[13] = new GamePiece(0, 0, 0, 1);//ok
-        piece[14] = new GamePiece(0, 0, 0, 0);//ok
-        piece[15] = new GamePiece(0, 1, 0, 0);
+        piece[8] = new GamePiece(8, 0, 1, 1, 1);//ok
+        piece[9] = new GamePiece(9, 0, 1, 1, 0);//ok
+        piece[10] = new GamePiece(10, 0, 1, 0, 1);//ok
+        piece[11] = new GamePiece(11, 0, 0, 1, 1);//ok
+        piece[12] = new GamePiece(12, 0, 0, 1, 0);//ok
+        piece[13] = new GamePiece(13, 0, 0, 0, 1);//ok
+        piece[14] = new GamePiece(14, 0, 0, 0, 0);//ok
+        piece[15] = new GamePiece(15, 0, 1, 0, 0);//ok
 
     }
 
@@ -93,6 +93,10 @@ public class GameBoard {
         }
     }
 
+    public GamePiece[][] getBoardArr() {
+        return board;
+    }
+
     public void verifyWinner() {
         if (verifyH()) {
             winner = 1;
@@ -105,7 +109,7 @@ public class GameBoard {
 
     public boolean verifyD() {
         boolean output = false;
-        int control[] = { 0, 0, 0, 0 };
+        int control[] = {0, 0, 0, 0};
         int aux[];
         GamePiece previous = board[0][0];
 
@@ -150,7 +154,7 @@ public class GameBoard {
 
     public boolean verifyH() {
         boolean output = false;
-        int control[] = { 0, 0, 0, 0 };
+        int control[] = {0, 0, 0, 0};
         int aux[];
         GamePiece previous = board[0][0];
         for (int i = 0; i < 4; i++) {
@@ -196,7 +200,7 @@ public class GameBoard {
 
     public boolean verifyV() {
         boolean output = false;
-        int control[] = { 0, 0, 0, 0 };
+        int control[] = {0, 0, 0, 0};
         int aux[];
         GamePiece previous = board[0][0];
 
@@ -223,7 +227,7 @@ public class GameBoard {
     }
 
     public int[] comparePieces(GamePiece x, GamePiece y) {
-        int control[] = { 0, 0, 0, 0 };
+        int control[] = {0, 0, 0, 0};
 
         for (int i = 0; i < 4; i++) {
             if (x.getFeatures()[i] == y.getFeatures()[i]) {

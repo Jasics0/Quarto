@@ -5,10 +5,6 @@
  */
 package Data;
 
-/**
- *
- * @author Retr0
- */
 public class Data {
     
 }

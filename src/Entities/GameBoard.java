@@ -25,23 +25,23 @@ public class GameBoard {
     }
 
     public void createPieces() {
-        piece[0] = new GamePiece(1, 1, 1, 1);
-        piece[1] = new GamePiece(1, 1, 1, 0);
-        piece[2] = new GamePiece(1, 1, 0, 1);
-        piece[3] = new GamePiece(1, 0, 1, 1);
-        piece[4] = new GamePiece(1, 0, 1, 0);
-        piece[5] = new GamePiece(1, 0, 0, 1);
-        piece[6] = new GamePiece(1, 0, 0, 0);
-        piece[7] = new GamePiece(1, 1, 1, 1);
+        piece[0] = new GamePiece(1, 1, 1, 1);//ok
+        piece[1] = new GamePiece(1, 1, 1, 0);//ok
+        piece[2] = new GamePiece(1, 1, 0, 1);//ok
+        piece[3] = new GamePiece(1, 0, 1, 1);//ok
+        piece[4] = new GamePiece(1, 0, 1, 0);//ok
+        piece[5] = new GamePiece(1, 0, 0, 1);//ok
+        piece[6] = new GamePiece(1, 0, 0, 0);//ok
+        piece[7] = new GamePiece(1, 1, 0, 0);
 
-        piece[8] = new GamePiece(0, 1, 1, 1);
-        piece[9] = new GamePiece(0, 1, 1, 0);
-        piece[10] = new GamePiece(0, 1, 0, 1);
-        piece[11] = new GamePiece(0, 0, 1, 1);
-        piece[12] = new GamePiece(0, 0, 1, 0);
-        piece[13] = new GamePiece(0, 0, 0, 1);
-        piece[14] = new GamePiece(0, 0, 0, 0);
-        piece[15] = new GamePiece(0, 1, 1, 1);
+        piece[8] = new GamePiece(0, 1, 1, 1);//ok
+        piece[9] = new GamePiece(0, 1, 1, 0);//ok
+        piece[10] = new GamePiece(0, 1, 0, 1);//ok
+        piece[11] = new GamePiece(0, 0, 1, 1);//ok
+        piece[12] = new GamePiece(0, 0, 1, 0);//ok
+        piece[13] = new GamePiece(0, 0, 0, 1);//ok
+        piece[14] = new GamePiece(0, 0, 0, 0);//ok
+        piece[15] = new GamePiece(0, 1, 0, 0);
 
     }
 

@@ -178,7 +178,7 @@ public class GameBoard {
     private void winningConditions(int value) {
         switch (winningAttribute) {
             case 0:
-                winningConditions += (value == 1) ? "Oscuras" : "Claras";
+                winningConditions += (value == 1) ? "Azules" : "Rosas";
                 break;
             case 1:
                 winningConditions += (value == 1) ? "Grandes" : "Pequeñas";

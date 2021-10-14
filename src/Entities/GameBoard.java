@@ -8,18 +8,20 @@ Código de estado:
  */
 package Entities;
 
-/**
- *
- * @author Retr0
- */
 public class GameBoard {
 
-    int winner = 0;
-    GamePiece[] piece = new GamePiece[16];
-    GamePiece[][] board = new GamePiece[4][4];
+    private int winner = 0;
+    private int winningAttribute = 0;
+    private String winningConditions = "";
+    private GamePiece[] piece = new GamePiece[16];
+    private GamePiece[][] board = new GamePiece[4][4];
 
     public GameBoard() {
         createPieces();
+    }
+
+    public boolean verifyPiece(int p) {
+        return (piece[p] != null) ? true : false;
     }
 
     public void createPieces() {
@@ -73,7 +75,7 @@ public class GameBoard {
         }
 
         return output;
-    }//OK
+    }// OK
 
     public void showBoard() {
         for (int i = 0; i < 4; i++) {
@@ -86,7 +88,7 @@ public class GameBoard {
 
     public void showPiecesAvaliables() {
         for (int i = 0; i < piece.length; i++) {
-            System.out.println((i + 1) + ". " + ((piece[i] == null) ? "x" : piece[i].getColor()) + " ");
+            System.out.println(i + ". " + ((piece[i] == null) ? "x" : piece[i].getColor()) + " ");
 
         }
     }
@@ -94,12 +96,61 @@ public class GameBoard {
     public void verifyWinner() {
         if (verifyH()) {
             winner = 1;
+        } else if (verifyV()) {
+            winner = 2;
+        } else if (verifyD()) {
+            winner = 3;
         }
+    }
+
+    public boolean verifyD() {
+        boolean output = false;
+        int control[] = { 0, 0, 0, 0 };
+        int aux[];
+        GamePiece previous = board[0][0];
+
+        for (int i = 0; i < 4; i++) {
+            if (previous != null && board[i][i] != null) {
+                aux = comparePieces(previous, board[i][i]);
+                control = addControls(control, aux);
+            }
+            previous = board[i][i];
+        }
+        if (verifyControl(control)) {
+            output = true;
+            winningConditions = "Diagonal a con las fichas ";
+            winningConditions(previous.getFeatures()[winningAttribute]);
+        } else {
+            for (int k = 0; k < 4; k++) {
+                control[k] = 0;
+            }
+        }
+        if (!output) {
+            previous = board[0][3];
+            for (int i = 3; i >= 0; i--) {
+                if (previous != null && board[3 - i][i] != null) {
+                    aux = comparePieces(previous, board[3 - i][i]);
+                    control = addControls(control, aux);
+                }
+                previous = board[3 - i][i];
+            }
+            if (verifyControl(control)) {
+                output = true;
+                winningConditions = "Diagonal b con las fichas ";
+                winningConditions(previous.getFeatures()[winningAttribute]);
+            } else {
+                for (int k = 0; k < 4; k++) {
+                    control[k] = 0;
+                }
+            }
+        }
+
+        return output;
     }
 
     public boolean verifyH() {
         boolean output = false;
-        int control[] = {0, 0, 0, 0};
+        int control[] = { 0, 0, 0, 0 };
         int aux[];
         GamePiece previous = board[0][0];
 
@@ -113,6 +164,55 @@ public class GameBoard {
             }
             if (verifyControl(control)) {
                 output = true;
+                winningConditions = "Linea " + (i + 1) + " con las fichas ";
+                winningConditions(previous.getFeatures()[winningAttribute]);
+                break;
+            } else {
+                for (int k = 0; k < 4; k++) {
+                    control[k] = 0;
+                }
+            }
+        }
+        return output;
+    }
+
+    private void winningConditions(int value) {
+        switch (winningAttribute) {
+            case 0:
+                winningConditions += (value == 1) ? "Oscuras" : "Claras";
+                break;
+            case 1:
+                winningConditions += (value == 1) ? "Grandes" : "Pequeñas";
+                break;
+            case 2:
+                winningConditions += (value == 1) ? "Cuadradas" : "Circulares";
+                break;
+            case 3:
+                winningConditions += (value == 1) ? "Con relleno" : "Sin relleno";
+                break;
+
+        }
+
+    }
+
+    public boolean verifyV() {
+        boolean output = false;
+        int control[] = { 0, 0, 0, 0 };
+        int aux[];
+        GamePiece previous = board[0][0];
+
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                if (previous != null && board[j][i] != null) {
+                    aux = comparePieces(previous, board[j][i]);
+                    control = addControls(control, aux);
+                }
+                previous = board[j][i];
+            }
+            if (verifyControl(control)) {
+                output = true;
+                winningConditions = "Columna " + (i + 1) + " con las fichas ";
+                winningConditions(previous.getFeatures()[winningAttribute]);
                 break;
             } else {
                 for (int k = 0; k < 4; k++) {
@@ -124,7 +224,7 @@ public class GameBoard {
     }
 
     public int[] comparePieces(GamePiece x, GamePiece y) {
-        int control[] = {0, 0, 0, 0};
+        int control[] = { 0, 0, 0, 0 };
 
         for (int i = 0; i < 4; i++) {
             if (x.getFeatures()[i] == y.getFeatures()[i]) {
@@ -146,6 +246,7 @@ public class GameBoard {
         for (int i = 0; i < 4; i++) {
             if (c[i] == 4) {
                 output = true;
+                winningAttribute = i;
                 break;
             }
         }
@@ -154,6 +255,10 @@ public class GameBoard {
 
     public int getWinner() {
         return winner;
+    }
+
+    public String getWinningConditions() {
+        return winningConditions;
     }
 
 }

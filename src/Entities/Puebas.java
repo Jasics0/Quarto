@@ -14,43 +14,10 @@ import java.util.Scanner;
 public class Puebas {
 
     public static void main(String[] args) {
-        Scanner keyboard = new Scanner(System.in);
-        GameBoard t = new GameBoard();
-        String letra = "";
-        int numberPiece = 0;
-        int numberBox = 0;
-        while (!letra.equals("s")) {
-            System.out.print("Eligiendo... ");
-            letra = keyboard.nextLine();
-            try {
-                numberBox = Integer.parseInt(letra);
-                t.showPiecesAvaliables();
-                System.out.print("Elija su ficha: ");
-                numberPiece = keyboard.nextInt();
-                int status;
-                switch (status=t.putPiece(numberPiece, numberBox)) {
-                    case 200:
-                        System.out.println("Melardo");
-                        t.showBoard();
-                        break;
-                    default:
-                        System.out.println("Error!"+status);
-                       break;
-                }
-            } catch (Exception e) {
-                System.out.println("Descifrando letra...");
-                switch (letra) {
-                    case "g":
-                        t.verifyWinner();
-                        System.out.println(t.getWinner());
-                        break;
-                    case "s":
-                        System.out.println("Chao owo");
-                        break;
-                }
-            }
-            
-            keyboard.nextLine();
-        }
+        Game play = new Game();
+        User usuario[] = new User[2];
+        usuario[0] = new User("Javier", 0);
+        usuario[1] = new User("Henrro", 0);
+        play.play(usuario);
     }
 }

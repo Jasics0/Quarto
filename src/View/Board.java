@@ -148,6 +148,7 @@ public class Board extends javax.swing.JFrame {
                     break;
             }
         }
+        status = 0;
     }
 
     public void showBoard() {
@@ -1005,7 +1006,6 @@ public class Board extends javax.swing.JFrame {
     private void R58ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_R58ActionPerformed
         numberBox = 15;
         putPiece();
-        R58.setEnabled(false);
     }// GEN-LAST:event_R58ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton5ActionPerformed

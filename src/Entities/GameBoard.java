@@ -77,6 +77,10 @@ public class GameBoard {
         return output;
     }// OK
 
+    public void cleanBoard() {
+        board = new GamePiece[4][4];
+    }
+
     public void showBoard() {
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {

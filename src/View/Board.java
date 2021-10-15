@@ -59,7 +59,7 @@ public class Board extends javax.swing.JFrame {
         usuarios[0] = new User(j1, 0);
         usuarios[1] = new User(j2, 0);
         jLabel12.setText("Turno: " + usuarios[shift]);
-        deshabilitar();
+        disableBoard();
     }
 
     public void auxBoard() {
@@ -100,7 +100,7 @@ public class Board extends javax.swing.JFrame {
         R58 = table[15];
     }
 
-    public void habilitar() {
+    public void enableBoard() {
         R26.setEnabled(true);
         R27.setEnabled(true);
         R28.setEnabled(true);
@@ -119,7 +119,7 @@ public class Board extends javax.swing.JFrame {
         R58.setEnabled(true);
     }
 
-    public void deshabilitar() {
+    public void disableBoard() {
         R26.setEnabled(false);
         R27.setEnabled(false);
         R28.setEnabled(false);
@@ -138,12 +138,14 @@ public class Board extends javax.swing.JFrame {
         R58.setEnabled(false);
     }
 
+    public void enablePieces(){} //hacer este metodo pls
+
     public void putPiece() {
 
         switch (status = t.putPiece(numberPiece, numberBox)) {
             case 200:
                 showBoard();
-                deshabilitar();
+                disableBoard();
                 numberPiece = -1;
                 break;
             case 402:
@@ -187,7 +189,6 @@ public class Board extends javax.swing.JFrame {
     }
 
     public void clean() {
-        np = 1;
         shift = 0;
         numberPiece = -1;
         numberBox = 0;
@@ -195,6 +196,7 @@ public class Board extends javax.swing.JFrame {
         shiftPlayed = 1;
         t.cleanBoard();
         showBoard();
+        enablePieces();
     }
 
     /**
@@ -1045,7 +1047,7 @@ public class Board extends javax.swing.JFrame {
 
         if (numberBox >= 0) {
             if (numberPiece >= 0) {
-                habilitar();
+                enableBoard();
                 if (shift == 0) {
                     shift++;
                 } else {

@@ -197,6 +197,7 @@ public class Board extends javax.swing.JFrame {
         t.cleanBoard();
         showBoard();
         enablePieces();
+        R40.setIcon(null);
     }
 
     /**

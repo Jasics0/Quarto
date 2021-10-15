@@ -1032,11 +1032,11 @@ public class Board extends javax.swing.JFrame {
             usuarios[shift].setPuntaje(usuarios[shift].getPuntaje() + 3);
 
             JOptionPane.showMessageDialog(null, usuarios[shift].getNombre()
-                    + " ha ganado la partida :D con las siguientes condiciones: " + t.getWinningConditions());
+                    + " ha ganado la partida con las siguientes condiciones: " + t.getWinningConditions()+" :D .\n\nPuntos: "+usuarios[shift].getPuntaje());
         } else {
             usuarios[shift].setPuntaje(usuarios[shift].getPuntaje() - 2);
             JOptionPane.showMessageDialog(null,
-                    usuarios[shift].getNombre() + " no ha ganado la partida D: se le restan 2 puntos.");
+                    usuarios[shift].getNombre() + " no ha ganado la partida, se le restan 2 puntos D: .\n\nPuntos: "+usuarios[shift].getPuntaje());
         }
 
     }// GEN-LAST:event_jButton5ActionPerformed

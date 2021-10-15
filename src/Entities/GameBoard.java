@@ -25,23 +25,23 @@ public class GameBoard {
     }
 
     public void createPieces() {
-        piece[0] = new GamePiece(0, 1, 1, 1, 1);//ok
-        piece[1] = new GamePiece(1, 1, 1, 1, 0);//ok
-        piece[2] = new GamePiece(2, 1, 1, 0, 1);//ok
-        piece[3] = new GamePiece(3, 1, 0, 1, 1);//ok
-        piece[4] = new GamePiece(4, 1, 0, 1, 0);//ok
-        piece[5] = new GamePiece(5, 1, 0, 0, 1);//ok
-        piece[6] = new GamePiece(6, 1, 0, 0, 0);//ok
+        piece[0] = new GamePiece(0, 1, 1, 1, 1);// ok
+        piece[1] = new GamePiece(1, 1, 1, 1, 0);// ok
+        piece[2] = new GamePiece(2, 1, 1, 0, 1);// ok
+        piece[3] = new GamePiece(3, 1, 0, 1, 1);// ok
+        piece[4] = new GamePiece(4, 1, 0, 1, 0);// ok
+        piece[5] = new GamePiece(5, 1, 0, 0, 1);// ok
+        piece[6] = new GamePiece(6, 1, 0, 0, 0);// ok
         piece[7] = new GamePiece(7, 1, 1, 0, 0);
 
-        piece[8] = new GamePiece(8, 0, 1, 1, 1);//ok
-        piece[9] = new GamePiece(9, 0, 1, 1, 0);//ok
-        piece[10] = new GamePiece(10, 0, 1, 0, 1);//ok
-        piece[11] = new GamePiece(11, 0, 0, 1, 1);//ok
-        piece[12] = new GamePiece(12, 0, 0, 1, 0);//ok
-        piece[13] = new GamePiece(13, 0, 0, 0, 1);//ok
-        piece[14] = new GamePiece(14, 0, 0, 0, 0);//ok
-        piece[15] = new GamePiece(15, 0, 1, 0, 0);//ok
+        piece[8] = new GamePiece(8, 0, 1, 1, 1);// ok
+        piece[9] = new GamePiece(9, 0, 1, 1, 0);// ok
+        piece[10] = new GamePiece(10, 0, 1, 0, 1);// ok
+        piece[11] = new GamePiece(11, 0, 0, 1, 1);// ok
+        piece[12] = new GamePiece(12, 0, 0, 1, 0);// ok
+        piece[13] = new GamePiece(13, 0, 0, 0, 1);// ok
+        piece[14] = new GamePiece(14, 0, 0, 0, 0);// ok
+        piece[15] = new GamePiece(15, 0, 1, 0, 0);// ok
 
     }
 
@@ -79,6 +79,10 @@ public class GameBoard {
 
     public void cleanBoard() {
         board = new GamePiece[4][4];
+        createPieces();
+        winner = 0;
+        winningAttribute = 0;
+        winningConditions = "";
     }
 
     public void showBoard() {
@@ -113,20 +117,22 @@ public class GameBoard {
 
     public boolean verifyD() {
         boolean output = false;
-        int control[] = {0, 0, 0, 0};
+        int control[] = { 0, 0, 0, 0 };
         int aux[];
-        GamePiece previous = board[0][0];
+        GamePiece previous = null;
 
         for (int i = 0; i < 4; i++) {
-            if (previous != null && board[i][i] != null) {
+            if (previous == null && board[i][i] != null) {
+                previous = board[i][i];
+            } else if (previous != null && board[i][i] != null) {
                 aux = comparePieces(previous, board[i][i]);
                 control = addControls(control, aux);
+                previous = board[i][i];
             }
-            previous = board[i][i];
         }
         if (verifyControl(control)) {
             output = true;
-            winningConditions = "Diagonal a con las fichas ";
+            winningConditions = "Diagonal A con las fichas ";
             winningConditions(previous.getFeatures()[winningAttribute]);
         } else {
             for (int k = 0; k < 4; k++) {
@@ -136,15 +142,17 @@ public class GameBoard {
         if (!output) {
             previous = board[0][3];
             for (int i = 3; i >= 0; i--) {
-                if (previous != null && board[3 - i][i] != null) {
+                if (previous == null && board[3 - i][i] != null) {
+                    previous = board[3 - i][i];
+                } else if (previous != null && board[3 - i][i] != null) {
                     aux = comparePieces(previous, board[3 - i][i]);
                     control = addControls(control, aux);
+                    previous = board[3 - i][i];
                 }
-                previous = board[3 - i][i];
             }
             if (verifyControl(control)) {
                 output = true;
-                winningConditions = "Diagonal b con las fichas ";
+                winningConditions = "Diagonal B con las fichas ";
                 winningConditions(previous.getFeatures()[winningAttribute]);
             } else {
                 for (int k = 0; k < 4; k++) {
@@ -158,16 +166,18 @@ public class GameBoard {
 
     public boolean verifyH() {
         boolean output = false;
-        int control[] = {0, 0, 0, 0};
+        int control[] = { 0, 0, 0, 0 };
         int aux[];
-        GamePiece previous = board[0][0];
+        GamePiece previous = null;
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
-                if (previous != null && board[i][j] != null) {
+                if (previous == null && board[i][j] != null) {
+                    previous = board[i][j];
+                } else if (previous != null && board[i][j] != null) {
                     aux = comparePieces(previous, board[i][j]);
                     control = addControls(control, aux);
+                    previous = board[i][j];
                 }
-                previous = board[i][j];
             }
             if (verifyControl(control)) {
                 output = true;
@@ -204,17 +214,19 @@ public class GameBoard {
 
     public boolean verifyV() {
         boolean output = false;
-        int control[] = {0, 0, 0, 0};
+        int control[] = { 0, 0, 0, 0 };
         int aux[];
-        GamePiece previous = board[0][0];
+        GamePiece previous = null;
 
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
-                if (previous != null && board[j][i] != null) {
+                if (previous == null && board[j][i] != null) {
+                    previous = board[j][i];
+                } else if (previous != null && board[j][i] != null) {
                     aux = comparePieces(previous, board[j][i]);
                     control = addControls(control, aux);
+                    previous = board[j][i];
                 }
-                previous = board[j][i];
             }
             if (verifyControl(control)) {
                 output = true;
@@ -231,7 +243,7 @@ public class GameBoard {
     }
 
     public int[] comparePieces(GamePiece x, GamePiece y) {
-        int control[] = {0, 0, 0, 0};
+        int control[] = { 0, 0, 0, 0 };
 
         for (int i = 0; i < 4; i++) {
             if (x.getFeatures()[i] == y.getFeatures()[i]) {

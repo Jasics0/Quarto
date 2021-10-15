@@ -138,7 +138,24 @@ public class Board extends javax.swing.JFrame {
         R58.setEnabled(false);
     }
 
-    public void enablePieces(){} //hacer este metodo pls
+    public void enablePieces() {
+        R42.setEnabled(true);
+        R43.setEnabled(true);
+        R44.setEnabled(true);
+        R45.setEnabled(true);
+        R46.setEnabled(true);
+        R47.setEnabled(true);
+        R48.setEnabled(true);
+        R49.setEnabled(true);
+        R50.setEnabled(true);
+        R51.setEnabled(true);
+        R52.setEnabled(true);
+        R53.setEnabled(true);
+        R54.setEnabled(true);
+        R55.setEnabled(true);
+        R56.setEnabled(true);
+        R57.setEnabled(true);
+    } //hacer este metodo pls
 
     public void putPiece() {
 
@@ -1078,6 +1095,7 @@ public class Board extends javax.swing.JFrame {
         np++;
         jLabel15.setText("Número de partida: " + np);
         clean();
+        enablePieces();
     }// GEN-LAST:event_jButton1ActionPerformed
 
     private void R57ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_R57ActionPerformed

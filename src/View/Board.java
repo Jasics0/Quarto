@@ -100,7 +100,6 @@ public class Board extends javax.swing.JFrame {
         R58 = table[15];
     }
 
-
     public void habilitar() {
         R26.setEnabled(true);
         R27.setEnabled(true);
@@ -165,8 +164,8 @@ public class Board extends javax.swing.JFrame {
                 if (board[i][j] != null) {
                     table[c].setIcon(
                             new javax.swing.ImageIcon(getClass().getResource("/img/" + board[i][j].getNp() + ".png")));
-                }else{
-                table[c].setIcon(null);
+                } else {
+                    table[c].setIcon(null);
                 }
                 c++;
             }
@@ -186,18 +185,17 @@ public class Board extends javax.swing.JFrame {
         }
 
     }
-    
-        public void clean(){
-                 np = 1;
-     shift = 0;
-     numberPiece = -1;
-     numberBox = 0;
-     status = 0;
-     shiftPlayed = 1;
+
+    public void clean() {
+        np = 1;
+        shift = 0;
+        numberPiece = -1;
+        numberBox = 0;
+        status = 0;
+        shiftPlayed = 1;
         t.cleanBoard();
         showBoard();
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.

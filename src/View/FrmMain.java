@@ -1,27 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package View;
 
-import Entities.Game;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
-/**
- *
- * @author josafath Ramirez
- */
 public class FrmMain extends javax.swing.JFrame {
 
-    Game game = new Game();
-
-    /**
-     * Creates new form FrmMain
-     */
+     public String FechaActual() {
+        String Fecha = new SimpleDateFormat("dd/MMMM/YYYY/HH:mm:ss").format(Calendar.getInstance().getTime());
+        return Fecha;
+    }
     public FrmMain() {
         initComponents();
         setLocationRelativeTo(null);
-        lblFecha.setText(game.FechaActual());
+        lblFecha.setText(FechaActual());
         lbl.setText("Neuman josafath Ramire Quesada");
     }
 
@@ -42,13 +33,13 @@ public class FrmMain extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lbl.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        lbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/12.png"))); // NOI18N
+        lbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Foto.jpeg"))); // NOI18N
         lbl.setText("Neuman Josafath Ramirez Quesada");
         lbl.setToolTipText("");
 
         lblTitulo.setFont(new java.awt.Font("Verdana", 0, 36)); // NOI18N
         lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitulo.setText("Cambio de Fichas");
+        lblTitulo.setText("Quarto");
         lblTitulo.setToolTipText("");
 
         lblFecha.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N

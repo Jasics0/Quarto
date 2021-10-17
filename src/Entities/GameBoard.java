@@ -8,6 +8,8 @@ Código de estado:
  */
 package Entities;
 
+import Data.Data;
+
 public class GameBoard {
 
     private int winner = 0;
@@ -15,9 +17,11 @@ public class GameBoard {
     private String winningConditions = "";
     private GamePiece[] piece = new GamePiece[16];
     private GamePiece[][] board = new GamePiece[4][4];
+    private int piecesPlayed = 0;
+    private int numberMatch;
 
     public GameBoard() {
-        createPieces();
+        initBoard();
     }
 
     public boolean verifyPiece(int p) {
@@ -45,7 +49,18 @@ public class GameBoard {
 
     }
 
+    private void bringNumbermatch() {
+        Data connection = new Data();
+        numberMatch = connection.getNumberMatch();
+    }
+
+    public void initBoard() {
+        createPieces();
+        bringNumbermatch();
+    }
+
     public int putPiece(int numPiece, int numBox) {
+        Data connection = new Data();
         int output = 503;
         if (numBox < 0 || numBox > 15) {
             output = 404;
@@ -64,6 +79,7 @@ public class GameBoard {
                             board[i][j] = piece[numPiece];
                             piece[numPiece] = null;
                             output = 200;
+                            piecesPlayed++;
                             i = 4;
                             break;
                         }
@@ -71,6 +87,12 @@ public class GameBoard {
                     k++;
                 }
 
+            }
+        }
+        if (piecesPlayed >= 16) {
+            verifyWinner();
+            if (winner == 0) {
+                winner = 4;
             }
         }
 
@@ -83,6 +105,7 @@ public class GameBoard {
         winner = 0;
         winningAttribute = 0;
         winningConditions = "";
+        piecesPlayed = 0;
     }
 
     public void showBoard() {
@@ -117,8 +140,8 @@ public class GameBoard {
 
     public boolean verifyD() {
         boolean output = false;
-        int control[] = { 0, 0, 0, 0 };
-        int aux[];
+        int control[] = {0, 0, 0, 0};
+        int aux[] = {0, 0, 0, 0};
         GamePiece previous = null;
 
         for (int i = 0; i < 4; i++) {
@@ -137,10 +160,11 @@ public class GameBoard {
         } else {
             for (int k = 0; k < 4; k++) {
                 control[k] = 0;
+                aux[k] = 0;
             }
+            previous = null;
         }
         if (!output) {
-            previous = board[0][3];
             for (int i = 3; i >= 0; i--) {
                 if (previous == null && board[3 - i][i] != null) {
                     previous = board[3 - i][i];
@@ -166,8 +190,8 @@ public class GameBoard {
 
     public boolean verifyH() {
         boolean output = false;
-        int control[] = { 0, 0, 0, 0 };
-        int aux[];
+        int control[] = {0, 0, 0, 0};
+        int aux[] = {0, 0, 0, 0};
         GamePiece previous = null;
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
@@ -185,8 +209,42 @@ public class GameBoard {
                 winningConditions(previous.getFeatures()[winningAttribute]);
                 break;
             } else {
+                previous = null;
                 for (int k = 0; k < 4; k++) {
                     control[k] = 0;
+                    aux[k] = 0;
+                }
+            }
+        }
+        return output;
+    }
+
+    public boolean verifyV() {
+        boolean output = false;
+        int control[] = {0, 0, 0, 0};
+        int aux[] = {0, 0, 0, 0};
+        GamePiece previous = null;
+
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                if (previous == null && board[j][i] != null) {
+                    previous = board[j][i];
+                } else if (previous != null && board[j][i] != null) {
+                    aux = comparePieces(previous, board[j][i]);
+                    control = addControls(control, aux);
+                    previous = board[j][i];
+                }
+            }
+            if (verifyControl(control)) {
+                output = true;
+                winningConditions = "Columna " + (i + 1) + " con las fichas ";
+                winningConditions(previous.getFeatures()[winningAttribute]);
+                break;
+            } else {
+                previous = null;
+                for (int k = 0; k < 4; k++) {
+                    control[k] = 0;
+                    aux[k] = 0;
                 }
             }
         }
@@ -212,38 +270,8 @@ public class GameBoard {
 
     }
 
-    public boolean verifyV() {
-        boolean output = false;
-        int control[] = { 0, 0, 0, 0 };
-        int aux[];
-        GamePiece previous = null;
-
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
-                if (previous == null && board[j][i] != null) {
-                    previous = board[j][i];
-                } else if (previous != null && board[j][i] != null) {
-                    aux = comparePieces(previous, board[j][i]);
-                    control = addControls(control, aux);
-                    previous = board[j][i];
-                }
-            }
-            if (verifyControl(control)) {
-                output = true;
-                winningConditions = "Columna " + (i + 1) + " con las fichas ";
-                winningConditions(previous.getFeatures()[winningAttribute]);
-                break;
-            } else {
-                for (int k = 0; k < 4; k++) {
-                    control[k] = 0;
-                }
-            }
-        }
-        return output;
-    }
-
     public int[] comparePieces(GamePiece x, GamePiece y) {
-        int control[] = { 0, 0, 0, 0 };
+        int control[] = {0, 0, 0, 0};
 
         for (int i = 0; i < 4; i++) {
             if (x.getFeatures()[i] == y.getFeatures()[i]) {
@@ -278,6 +306,14 @@ public class GameBoard {
 
     public String getWinningConditions() {
         return winningConditions;
+    }
+
+    public int getNumberMatch() {
+        return numberMatch;
+    }
+
+    public void setNumberMatch() {
+        this.numberMatch++;
     }
 
 }

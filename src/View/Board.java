@@ -7,6 +7,7 @@ package View;
 import Entities.GameBoard;
 import Entities.GamePiece;
 import Entities.User;
+import Utilities.Stopwatch;
 import javax.swing.JButton;
 
 import javax.swing.JFrame;
@@ -16,7 +17,10 @@ import javax.swing.JOptionPane;
  *
  * @author henry
  */
-public class Board extends javax.swing.JFrame {
+public class Board extends javax.swing.JFrame implements Runnable{
+    
+    
+    
 
     /**
      * Creates new form Board
@@ -25,12 +29,12 @@ public class Board extends javax.swing.JFrame {
     User usuarios[] = new User[2];
     String j1 = "";
     String j2 = "";
-    int np = 1;
     int shift = 0;
     int numberPiece = -1;
     int numberBox = 0;
     int status = 0;
     int shiftPlayed = 1;
+    Stopwatch crono;
     JFrame f = new JFrame();
 
     public Board() {
@@ -55,11 +59,14 @@ public class Board extends javax.swing.JFrame {
         }
         jLabel13.setText("Jugador 1: " + j1);
         jLabel14.setText("Jugador 2: " + j2);
-        jLabel15.setText("Número de partida: " + np);
-        usuarios[0] = new User(j1, 0);
-        usuarios[1] = new User(j2, 0);
+        jLabel15.setText("Número de partida: " + t.getNumberMatch());
+        usuarios[0] = new User(j1);
+        usuarios[1] = new User(j2);
         jLabel12.setText("Turno: " + usuarios[shift]);
         disableBoard();
+        crono= new Stopwatch();        
+        Thread thread= new Thread(crono);
+        thread.start();
     }
 
     public void auxBoard() {
@@ -173,6 +180,22 @@ public class Board extends javax.swing.JFrame {
                 break;
         }
         status = 0;
+        usuarios[shift].addPiece();
+        if(t.getWinner()==4){
+        crono.parar();
+        User tie= new User();
+        tie.setWins(numberPiece, crono.getHora()+":"+crono.getMin()+":"+crono.getSeg());
+        JOptionPane.showMessageDialog(null, "Hubo un empate :| ");
+        clean();
+        }else    if (t.getWinner() != 0){
+            usuarios[shift].setScore(usuarios[shift].getScore()+ 3);
+            usuarios[shift].setWins(t.getNumberMatch(),crono.getHora()+":"+crono.getMin()+":"+crono.getSeg());
+                        t.setNumberMatch();
+                        crono.parar();
+            JOptionPane.showMessageDialog(null, usuarios[shift].getName()
+                    + " ha ganado la partida con las siguientes condiciones: " + t.getWinningConditions()+" :D .\n\nPuntos: "+usuarios[shift].getScore());
+            clean();
+        }
     }
 
     public void showBoard() {
@@ -215,6 +238,13 @@ public class Board extends javax.swing.JFrame {
         showBoard();
         enablePieces();
         R40.setIcon(null);
+        for (int i = 0; i < usuarios.length; i++) {
+            usuarios[i].cleanPeces();
+        }
+        
+         jLabel15.setText("Número de partida: " + t.getNumberMatch());
+crono.initCrono();
+        
     }
 
     /**
@@ -1049,14 +1079,18 @@ public class Board extends javax.swing.JFrame {
 
         t.verifyWinner();
         if (t.getWinner() != 0) {
-            usuarios[shift].setPuntaje(usuarios[shift].getPuntaje() + 3);
-
-            JOptionPane.showMessageDialog(null, usuarios[shift].getNombre()
-                    + " ha ganado la partida con las siguientes condiciones: " + t.getWinningConditions()+" :D .\n\nPuntos: "+usuarios[shift].getPuntaje());
+            usuarios[shift].setScore(usuarios[shift].getScore()+ 3);
+            usuarios[shift].setWins(t.getNumberMatch(),crono.getHora()+":"+crono.getMin()+":"+crono.getSeg());
+            t.setNumberMatch();
+            crono.parar();
+            JOptionPane.showMessageDialog(null, usuarios[shift].getName()
+                    + " ha ganado la partida con las siguientes condiciones: " + t.getWinningConditions()+" :D .\n\nPuntos: "+usuarios[shift].getScore());
+            clean();
         } else {
-            usuarios[shift].setPuntaje(usuarios[shift].getPuntaje() - 2);
+            usuarios[shift].setScore(usuarios[shift].getScore()- 2);
+            
             JOptionPane.showMessageDialog(null,
-                    usuarios[shift].getNombre() + " no ha ganado la partida, se le restan 2 puntos D: .\n\nPuntos: "+usuarios[shift].getPuntaje());
+                    usuarios[shift].getName()+ " no ha ganado la partida, se le restan 2 puntos D: .\n\nPuntos: "+usuarios[shift].getScore());
         }
 
     }// GEN-LAST:event_jButton5ActionPerformed
@@ -1092,8 +1126,6 @@ public class Board extends javax.swing.JFrame {
     }// GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton1ActionPerformed
-        np++;
-        jLabel15.setText("Número de partida: " + np);
         clean();
         enablePieces();
     }// GEN-LAST:event_jButton1ActionPerformed
@@ -1343,4 +1375,8 @@ public class Board extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
+    @Override
+    public void run() {
+        this.setVisible(true);
+    }
 }

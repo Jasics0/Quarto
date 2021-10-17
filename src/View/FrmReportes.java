@@ -1,9 +1,6 @@
 package View;
 
 import javax.swing.table.DefaultTableModel;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 
 /**
  *
@@ -34,9 +31,6 @@ public class FrmReportes extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         btnVolver = new javax.swing.JButton();
-        btnR2 = new javax.swing.JButton();
-        btnR3 = new javax.swing.JButton();
-        btnR1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,42 +69,12 @@ public class FrmReportes extends javax.swing.JFrame {
             }
         });
 
-        btnR2.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        btnR2.setText("Reporte2");
-        btnR2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnR2ActionPerformed(evt);
-            }
-        });
-
-        btnR3.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        btnR3.setText("Reporte3");
-        btnR3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnR3ActionPerformed(evt);
-            }
-        });
-
-        btnR1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        btnR1.setText("Reporte1");
-        btnR1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnR1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnR1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnR2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnR3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36))
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
@@ -119,11 +83,7 @@ public class FrmReportes extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnR3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnR2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnR1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -131,115 +91,6 @@ public class FrmReportes extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void CargarTablar1() {
-        File archivo = null;
-        FileReader fr = null;
-        BufferedReader br = null;
-
-        try {
-            archivo = new File("C:\\Users\\Josafath Ramirez Q\\Documents\\NetBeansProjects\\progra2-2021\\Proyecto1\\src\\Datos\\Usuarios.txt");
-            fr = new FileReader(archivo);
-            br = new BufferedReader(fr);
-            String[] fila = new String[10];
-            String linea;
-            model.addColumn("Usuario    Fecha            Cant movimentos   Cant Saltos       Lo logro");
-
-            while ((linea = br.readLine()) != null) {
-                model.addRow(new String[]{linea});
-            }
-            table.setModel(model);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (null != fr) {
-                    fr.close();
-                }
-            } catch (Exception x) {
-                x.printStackTrace();
-            }
-        }
-    }
-
-    private void CargarTablar2() {
-        File archivo = null;
-        FileReader fr = null;
-        BufferedReader br = null;
-
-        try {
-            archivo = new File("C:\\Users\\Josafath Ramirez Q\\Documents\\NetBeansProjects\\progra2-2021\\Proyecto1\\src\\Datos\\Usuarios.txt");
-            fr = new FileReader(archivo);
-            br = new BufferedReader(fr);
-            String[] fila = new String[10];
-            String linea;
-            model.addColumn("Usuario    Fecha            Cant movimentos   Cant Saltos       Lo logro");
-
-            while ((linea = br.readLine()) != null) {
-                model.addRow(new String[]{linea});
-            }
-            table.setModel(model);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (null != fr) {
-                    fr.close();
-                }
-            } catch (Exception x) {
-                x.printStackTrace();
-            }
-        }
-    }
-
-    private void CargarTablar3() {
-        File archivo = null;
-        FileReader fr = null;
-        BufferedReader br = null;
-
-        try {
-            archivo = new File("C:\\Users\\Josafath Ramirez Q\\Documents\\NetBeansProjects\\progra2-2021\\Proyecto1\\src\\Datos\\Usuarios.txt");
-            fr = new FileReader(archivo);
-            br = new BufferedReader(fr);
-            String[] fila = new String[10];
-            String linea;
-            model.addColumn("Usuario    Fecha            Cant movimentos   Cant Saltos       Lo logro");
-
-            while ((linea = br.readLine()) != null) {
-                model.addRow(new String[]{linea});
-            }
-            table.setModel(model);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (null != fr) {
-                    fr.close();
-                }
-            } catch (Exception x) {
-                x.printStackTrace();
-            }
-        }
-    }
-    private void Limpiar() {
-        model.setRowCount(0);
-    }
-
-
-    private void btnR1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnR1ActionPerformed
-        CargarTablar1();
-       
-    }//GEN-LAST:event_btnR1ActionPerformed
-
-    private void btnR2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnR2ActionPerformed
-        CargarTablar2();
-       
-    }//GEN-LAST:event_btnR2ActionPerformed
-
-    private void btnR3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnR3ActionPerformed
-        CargarTablar3();
-        
-    }//GEN-LAST:event_btnR3ActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         // TODO add your handling code here:
@@ -284,9 +135,6 @@ public class FrmReportes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnR1;
-    private javax.swing.JButton btnR2;
-    private javax.swing.JButton btnR3;
     private javax.swing.JButton btnVolver;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable table;

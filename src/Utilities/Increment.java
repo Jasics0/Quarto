@@ -1,57 +1,52 @@
 package Utilities;
 
-public class Increment extends Thread {
-
+public class Increment extends Thread{
     private Stopwatch v;
     private int seg;
     private int min;
     private int hora;
-
-    public Increment(Stopwatch v) {
-        this.v = v;
+  
+    public Increment(Stopwatch v){
+        this.v=v;
         seg = v.getSeg();
         min = v.getMin();
-        hora = v.getHora();
+        hora = v.getHora();       
     }
-
     @Override
     public void run() {
-
-        while (true) {
-            if (seg != 59) {
-                seg = v.aumentSeg();
-            } else {
-                seg = 0;
-                v.resetSeg();
-                if (min != 59) {
-                    min = v.aumentMin();
-                } else {
-                    hora = v.aumentHora();
-                    min = 0;
+        for (; ;){
+            if (seg!=59){
+                seg=v.aumentSeg();
+            }else{
+                 seg=0;
+                 v.resetSeg();
+                if(min!=59){            
+                    min=v.aumentMin();
+                }else{
+                    hora=v.aumentHora();
+                    min=0;
                     v.resetMin();
-                }
+                }           
             }
-            try {
+             try {
                 sleep(999);
             } catch (InterruptedException ex) {
                 System.err.println(ex.getMessage());
             }
-            if (!v.isContinuar()) {
+            if(!v.isContinuar()){
                 try {
-                    synchronized (this) {
-                        this.wait();
-                    }
+                    synchronized(this){
+                       this.wait(); 
+                    } 
                 } catch (InterruptedException ex) {
                     System.err.println(ex.getMessage());
                 }
-            }
-        }
-
-    }
-
-    public void seguir() {
-        synchronized (this) {
+            }    
+        }       
+    }    
+    public void seguir(){
+        synchronized(this){
             notifyAll();
         }
-    }
+    }   
 }

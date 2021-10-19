@@ -182,19 +182,21 @@ public class Board extends javax.swing.JFrame implements Runnable{
         status = 0;
         usuarios[shift].addPiece();
         if(t.getWinner()==4){
-        crono.parar();
         User tie= new User();
         tie.setWins(numberPiece, crono.getHora()+":"+crono.getMin()+":"+crono.getSeg());
+                    crono.parar();
         JOptionPane.showMessageDialog(null, "Hubo un empate :| ");
-        clean();
+         clean();
+         crono.reanudar();
         }else    if (t.getWinner() != 0){
             usuarios[shift].setScore(usuarios[shift].getScore()+ 3);
             usuarios[shift].setWins(t.getNumberMatch(),crono.getHora()+":"+crono.getMin()+":"+crono.getSeg());
                         t.setNumberMatch();
-                        crono.parar();
+                                    crono.parar();
             JOptionPane.showMessageDialog(null, usuarios[shift].getName()
                     + " ha ganado la partida con las siguientes condiciones: " + t.getWinningConditions()+" :D .\n\nPuntos: "+usuarios[shift].getScore());
             clean();
+            crono.reanudar();
         }
     }
 
@@ -242,9 +244,9 @@ public class Board extends javax.swing.JFrame implements Runnable{
             usuarios[i].cleanPeces();
         }
         
-         jLabel15.setText("Número de partida: " + t.getNumberMatch());
-crono.initCrono();
-        
+        jLabel15.setText("Número de partida: " + t.getNumberMatch());
+        crono.initCrono();
+        jLabel12.setText("Turno: " + usuarios[shift]);
     }
 
     /**
@@ -1086,6 +1088,8 @@ crono.initCrono();
             JOptionPane.showMessageDialog(null, usuarios[shift].getName()
                     + " ha ganado la partida con las siguientes condiciones: " + t.getWinningConditions()+" :D .\n\nPuntos: "+usuarios[shift].getScore());
             clean();
+                        crono.reanudar();
+
         } else {
             usuarios[shift].setScore(usuarios[shift].getScore()- 2);
             

@@ -79,7 +79,7 @@ public class Statistic {
     
     public static void main(String[] args) {
         Statistic s = new Statistic();
-        String[] r = s.report3();
+        String[] r = s.report1();
         for (int i = 0; i < r.length; i++) {
             System.out.println(r[i]);
         }

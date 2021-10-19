@@ -61,7 +61,6 @@ public class Statistic {
             } else {
                 report[i] = "Hubo empate en la patida #" + aux[0];
             }
-
         }
         return report;
     }
@@ -79,7 +78,7 @@ public class Statistic {
     
     public static void main(String[] args) {
         Statistic s = new Statistic();
-        String[] r = s.report1();
+        String[] r = s.report2();
         for (int i = 0; i < r.length; i++) {
             System.out.println(r[i]);
         }

@@ -79,7 +79,11 @@ public class Statistic {
     public static void main(String[] args) {
         Statistic s = new Statistic();
 <<<<<<< HEAD
+<<<<<<< HEAD
         String[] r = s.report2();
+=======
+        String[] r = s.report3();
+>>>>>>> parent of e6fbe18 (Fixed)
 =======
         String[] r = s.report3();
 >>>>>>> parent of e6fbe18 (Fixed)

@@ -247,14 +247,20 @@ public class Board extends javax.swing.JFrame implements Runnable {
             usuarios[i].cleanPeces();
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
         jLabel15.setText("Número de partida: " + t.getNumberMatch());
 
 =======
+=======
+>>>>>>> parent of e6fbe18 (Fixed)
         
          jLabel15.setText("Número de partida: " + t.getNumberMatch());
 crono.initCrono();
         
+<<<<<<< HEAD
+>>>>>>> parent of e6fbe18 (Fixed)
+=======
 >>>>>>> parent of e6fbe18 (Fixed)
     }
 

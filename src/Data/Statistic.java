@@ -78,7 +78,11 @@ public class Statistic {
     
     public static void main(String[] args) {
         Statistic s = new Statistic();
+<<<<<<< HEAD
         String[] r = s.report2();
+=======
+        String[] r = s.report3();
+>>>>>>> parent of e6fbe18 (Fixed)
         for (int i = 0; i < r.length; i++) {
             System.out.println(r[i]);
         }

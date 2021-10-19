@@ -6,6 +6,8 @@
 package quarto;
 
 import View.Board;
+import Utilities.Stopwatch;
+
 /**
  *
  * @author Retr0

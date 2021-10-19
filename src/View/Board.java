@@ -173,6 +173,7 @@ public class Board extends javax.swing.JFrame implements Runnable {
         }
         status = 0;
         usuarios[shift].addPiece();
+<<<<<<< HEAD
         if (t.getWinner() == 4) {
             JOptionPane.showMessageDialog(null, "Hubo un empate :| ");
             clean();
@@ -183,6 +184,21 @@ public class Board extends javax.swing.JFrame implements Runnable {
             JOptionPane.showMessageDialog(null,
                     usuarios[shift].getName() + " ha ganado la partida con las siguientes condiciones: "
                             + t.getWinningConditions() + " :D .\n\nPuntos: " + usuarios[shift].getScore());
+=======
+        if(t.getWinner()==4){
+        crono.parar();
+        User tie= new User();
+        tie.setWins(numberPiece, crono.getHora()+":"+crono.getMin()+":"+crono.getSeg());
+        JOptionPane.showMessageDialog(null, "Hubo un empate :| ");
+        clean();
+        }else    if (t.getWinner() != 0){
+            usuarios[shift].setScore(usuarios[shift].getScore()+ 3);
+            usuarios[shift].setWins(t.getNumberMatch(),crono.getHora()+":"+crono.getMin()+":"+crono.getSeg());
+                        t.setNumberMatch();
+                        crono.parar();
+            JOptionPane.showMessageDialog(null, usuarios[shift].getName()
+                    + " ha ganado la partida con las siguientes condiciones: " + t.getWinningConditions()+" :D .\n\nPuntos: "+usuarios[shift].getScore());
+>>>>>>> parent of e6fbe18 (Fixed)
             clean();
         }
     }
@@ -230,9 +246,16 @@ public class Board extends javax.swing.JFrame implements Runnable {
         for (int i = 0; i < usuarios.length; i++) {
             usuarios[i].cleanPeces();
         }
+<<<<<<< HEAD
 
         jLabel15.setText("Número de partida: " + t.getNumberMatch());
 
+=======
+        
+         jLabel15.setText("Número de partida: " + t.getNumberMatch());
+crono.initCrono();
+        
+>>>>>>> parent of e6fbe18 (Fixed)
     }
 
     /**

@@ -19,6 +19,7 @@ public class Stopwatch extends javax.swing.JFrame implements Runnable {
         resetMin();
         resetHora();
         seguir();
+        i = null;
         i = new Increment(this);
         i.start();
     }
@@ -223,16 +224,14 @@ public class Stopwatch extends javax.swing.JFrame implements Runnable {
         continuar = true;
     }
 
-    public synchronized void reanudar() {
-        continuar = true;
-        i.seguir();
-    }
-
     public synchronized void initCrono() {
         resetSeg();
         resetMin();
         resetHora();
         seguir();
+        i = null;
+        i = new Increment(this);
+        i.start();
     }
 
     public synchronized void parar() {

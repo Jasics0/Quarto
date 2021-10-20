@@ -3,3 +3,10 @@ Charry,0,0
 Henrro,3,1
 Oli,3,1
 Wiz,0,0
+Ola,0,0
+Kmas,0,0
+Hola,0,0
+K mas,0,0
+Hoa,0,0
+k mas,0,0
+paiton,0,0

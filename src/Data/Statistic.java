@@ -69,17 +69,15 @@ public class Statistic {
     public String[] report3(){
         ArrayList<String> list = connection.getMatchs();
         String[] report = new String[list.size()];
-        String aux[];
         for (int i = 0; i < list.size(); i++) {
-            aux = list.get(i).split(",");
-            report[i] = "Partida #"+aux[0]+": "+aux[3];
+            report[i] = list.get(i);
         }
         return report;
     }
     
     public static void main(String[] args) {
         Statistic s = new Statistic();
-        String[] r = s.report1();
+        String[] r = s.report3();
         for (int i = 0; i < r.length; i++) {
             System.out.println(r[i]);
         }

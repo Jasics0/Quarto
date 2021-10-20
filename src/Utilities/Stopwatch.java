@@ -1,13 +1,13 @@
 package Utilities;
 
 public class Stopwatch extends javax.swing.JFrame implements Runnable {
-
+    
     private int seg = 0;
     private int min = 0;
     private int hora = 0;
     private boolean continuar = true;
     private Increment i;
-
+    
     public Stopwatch() {
         initComponents();
         setLocationRelativeTo(null);
@@ -173,72 +173,80 @@ public class Stopwatch extends javax.swing.JFrame implements Runnable {
     public void run() {
         this.setVisible(true);
     }
-
+    
     public synchronized int aumentSeg() {
         seg++;
         txf_cont3.setText(String.valueOf(seg));
         return seg;
     }
-
+    
     public synchronized int aumentMin() {
         min++;
         txf_cont2.setText(String.valueOf(min));
         return min;
     }
-
+    
     public synchronized int aumentHora() {
         hora++;
         txf_cont1.setText(String.valueOf(hora));
         return hora;
     }
-
+    
     public void resetSeg() {
         txf_cont3.setText(String.valueOf("0"));
         seg = 0;
     }
-
+    
     public void resetMin() {
         txf_cont2.setText(String.valueOf("0"));
         min = 0;
     }
-
+    
     public void resetHora() {
         txf_cont1.setText(String.valueOf("0"));
         hora = 0;
     }
-
+    
     public synchronized int getMin() {
         return min;
     }
-
+    
     public synchronized int getSeg() {
         return seg;
     }
-
+    
     public synchronized int getHora() {
         return hora;
     }
-
+    
     public synchronized void seguir() {
         continuar = true;
     }
-
+    
     public synchronized void reanudar() {
         continuar = true;
         i.seguir();
     }
-
+    
     public synchronized void initCrono() {
         resetSeg();
         resetMin();
         resetHora();
         seguir();
     }
-
+    
+    public synchronized void closeCrono() {
+        resetSeg();
+        resetMin();
+        resetHora();
+        parar();
+        this.setVisible(false);
+    }
+    
     public synchronized void parar() {
         continuar = false;
     }
-
+    
     public synchronized boolean isContinuar() {
         return continuar;
     }

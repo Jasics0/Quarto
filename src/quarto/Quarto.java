@@ -1,23 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package quarto;
 
-import View.Board;
-/**
- *
- * @author Retr0
- */
+import View.FrmMain;
+
 public class Quarto {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        Thread thread = new Thread(new Board());
-        thread.run();
+        FrmMain fmain = new FrmMain();
+        fmain.setVisible(true);
     }
 
 }

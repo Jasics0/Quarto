@@ -5,10 +5,11 @@ import java.util.Calendar;
 
 public class FrmMain extends javax.swing.JFrame {
 
-     public String FechaActual() {
+    public String FechaActual() {
         String Fecha = new SimpleDateFormat("dd/MMMM/YYYY/HH:mm:ss").format(Calendar.getInstance().getTime());
         return Fecha;
     }
+
     public FrmMain() {
         initComponents();
         setLocationRelativeTo(null);
@@ -29,6 +30,7 @@ public class FrmMain extends javax.swing.JFrame {
         lblTitulo = new javax.swing.JLabel();
         lblFecha = new javax.swing.JLabel();
         btnEmpezar = new javax.swing.JButton();
+        btnEmpezar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,10 +50,18 @@ public class FrmMain extends javax.swing.JFrame {
         lblFecha.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         btnEmpezar.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
-        btnEmpezar.setText("Empezar");
+        btnEmpezar.setText("Reportes");
         btnEmpezar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEmpezarActionPerformed(evt);
+            }
+        });
+
+        btnEmpezar1.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
+        btnEmpezar1.setText("Empezar");
+        btnEmpezar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEmpezar1ActionPerformed(evt);
             }
         });
 
@@ -63,39 +73,53 @@ public class FrmMain extends javax.swing.JFrame {
                 .addComponent(lblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnEmpezar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(156, 156, 156))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnEmpezar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(97, 97, 97))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(97, 97, 97)
-                .addComponent(lblFecha)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnEmpezar1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(lblFecha)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(12, 12, 12)
                 .addComponent(lblTitulo)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(30, 30, 30)
                 .addComponent(lblFecha)
-                .addGap(18, 18, 18)
-                .addComponent(btnEmpezar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEmpezar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEmpezar1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEmpezarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpezarActionPerformed
-        Board board = new Board();
-        board.setVisible(true);
+        FrmReportes frepo = new FrmReportes();
+        frepo.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnEmpezarActionPerformed
+
+    private void btnEmpezar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpezar1ActionPerformed
+        Thread thread = new Thread(new Board());
+        thread.run();
+        this.dispose();
+    }//GEN-LAST:event_btnEmpezar1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -135,6 +159,7 @@ public class FrmMain extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEmpezar;
+    private javax.swing.JButton btnEmpezar1;
     private javax.swing.JLabel lbl;
     private javax.swing.JLabel lblFecha;
     private javax.swing.JLabel lblTitulo;

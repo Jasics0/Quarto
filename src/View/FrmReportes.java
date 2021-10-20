@@ -5,6 +5,7 @@ import Data.Statistic;
 import Entities.User;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import quarto.Quarto;
 
 /**
  *
@@ -56,10 +57,12 @@ public final class FrmReportes extends javax.swing.JFrame {
         modelo.addColumn("# Partida");
         modelo.addColumn("Tiempo");
         this.tabla3.setModel(modelo);
+        String aux[];
+        String info[] = new String[2];
         for (int i = 0; i < r3.length; i++) {
-            String info[] = new String[2];
-            info[0] = r3[i].substring(8, 10);
-            info[1] = r3[i].substring(12, r3[i].length());
+            aux = r3[i].split(",");
+            info[0] = aux[0];
+            info[1] = aux[3];
             modelo.addRow(info);
         }
     }
@@ -204,7 +207,8 @@ public final class FrmReportes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        // TODO add your handling code here:
+        FrmMain fmain = new FrmMain();
+        fmain.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 

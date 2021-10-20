@@ -12,24 +12,13 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/henry/Documents/GitHub/Quarto/src/Data/Statistic.java</file>
-            <file>file:/C:/Users/henry/Documents/GitHub/Quarto/src/img/11.png</file>
-            <file>file:/C:/Users/henry/Documents/GitHub/Quarto/src/Utilities/Stopwatch.java</file>
-            <file>file:/C:/Users/henry/Documents/GitHub/Quarto/src/View/FrmReportes.java</file>
-            <file>file:/C:/Users/henry/Documents/GitHub/Quarto/src/Entities/GamePiece.java</file>
-            <file>file:/C:/Users/henry/Documents/GitHub/Quarto/src/quarto/Quarto.java</file>
-            <file>file:/C:/Users/henry/Documents/GitHub/Quarto/src/img/14.png</file>
-            <file>file:/C:/Users/henry/Documents/GitHub/Quarto/src/View/FrmMain.java</file>
-            <file>file:/C:/Users/henry/Documents/GitHub/Quarto/src/img/1.png</file>
-            <file>file:/C:/Users/henry/Documents/GitHub/Quarto/src/Data/match.txt</file>
-            <file>file:/C:/Users/henry/Documents/GitHub/Quarto/src/View/Board.java</file>
-            <file>file:/C:/Users/henry/Documents/GitHub/Quarto/src/img/6.png</file>
-            <file>file:/C:/Users/henry/Documents/GitHub/Quarto/src/Data/users.txt</file>
-            <file>file:/C:/Users/henry/Documents/GitHub/Quarto/src/Entities/GameBoard.java</file>
-            <file>file:/C:/Users/henry/Documents/GitHub/Quarto/src/img/7.png</file>
-            <file>file:/C:/Users/henry/Documents/GitHub/Quarto/src/Entities/User.java</file>
-            <file>file:/C:/Users/henry/Documents/GitHub/Quarto/src/Utilities/Increment.java</file>
-            <file>file:/C:/Users/henry/Documents/GitHub/Quarto/src/Data/Data.java</file>
+            <file>file:/E:/Projects/GitHub/Quarto/src/View/Board.java</file>
+            <file>file:/E:/Projects/GitHub/Quarto/src/Data/users.txt</file>
+            <file>file:/E:/Projects/GitHub/Quarto/src/Data/match.txt</file>
+            <file>file:/E:/Projects/GitHub/Quarto/src/Data/Data.java</file>
+            <file>file:/E:/Projects/GitHub/Quarto/src/quarto/Quarto.java</file>
+            <file>file:/E:/Projects/GitHub/Quarto/src/View/FrmReportes.java</file>
+            <file>file:/E:/Projects/GitHub/Quarto/src/Data/Statistic.java</file>
         </group>
     </open-files>
 </project-private>

@@ -10,3 +10,7 @@ K mas,0,0
 Hoa,0,0
 k mas,0,0
 paiton,0,0
+Omegalul,3,1
+Tkiero amix,0,0
+Epicardio,0,0
+Sionob ro,0,0

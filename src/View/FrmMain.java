@@ -14,7 +14,7 @@ public class FrmMain extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         lblFecha.setText(FechaActual());
-        lbl.setText("Neuman josafath Ramire Quesada");
+        lbl.setText("Javier Charry");
     }
 
     /**
